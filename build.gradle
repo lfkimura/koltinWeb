@@ -14,7 +14,9 @@ repositories {
     jcenter()
     mavenCentral()
 }
+apply plugin: 'application'
 
+mainClassName = "com.web.Main"
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 }

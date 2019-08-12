@@ -17,17 +17,17 @@ class RequestInput {
     fun status() = "Hello Kotlin!"
 
     @PostMapping(path = ["dev"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun validate(@RequestBody input: String): transactionResponse {
+    fun validate(@RequestBody input: String): MoneyMovementResponse {
 
         val random = Math.random()
         logger.info("random value $random")
         logger.info(input)
         if (random > 0.1)
-            return transactionResponse(true, "ASDFGHJKL", "success")
+            return MoneyMovementResponse(true, "ASDFGHJKL", "success")
         else throw Exception()
     }
 }
 
-data class transactionResponse(val accepted: Boolean, val movementId: String, val message: String)
+data class MoneyMovementResponse(val accepted: Boolean, val movementId: String, val message: String)
 
 data class ResponseData(val id: String, val accepted: Boolean, val status: String)
